@@ -8,7 +8,8 @@ export default class ApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
-    this.perPage = 16;
+    this.perPage = 12;
+    this.total = '';
   }
   
   fetchPhotos() {
@@ -22,7 +23,10 @@ export default class ApiService {
     });
 
     return axios.get(`?${url}`)
-      .then(response => response.data.hits)
+      .then(response => {
+        this.total = response.data.total;
+        return response.data.hits;
+      })
       .then(this.incrementPage());
   };
 

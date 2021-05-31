@@ -1,10 +1,18 @@
 import refs from './refs';
 import templates from '../templates/photo-card.hbs';
+import { photosApiService } from '../index';
 
 export function renderCardsMarckup(data) {
-  refs.gallery.insertAdjacentHTML('beforeend', templates(data));
-};
+  if (data.length && photosApiService.page === 2) {
+    document.body.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
 
-export function resetCardsMarckup() {
-  refs.gallery.innerHTML = '';
+    refs.gallery.innerHTML = '';
+  };
+
+  refs.gallery.insertAdjacentHTML('beforeend', templates(data));
+
+  return data;
 };

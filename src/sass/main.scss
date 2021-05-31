@@ -76,11 +76,6 @@ main {
 
   transition: all 0.2s ease-in-out;
 
-  &:hover {
-    border-color: #86b7fe;
-    opacity: 1;
-  }
-
   &:focus {
     opacity: 1;
     outline: none;

@@ -9,10 +9,14 @@ export function renderCardsMarckup(data) {
       block: 'start',
     });
 
-    refs.gallery.innerHTML = '';
+    resetMarckup();
   };
 
   refs.gallery.insertAdjacentHTML('beforeend', templates(data));
 
   return data;
 };
+
+function resetMarckup() {
+  refs.gallery.innerHTML = '';
+}
